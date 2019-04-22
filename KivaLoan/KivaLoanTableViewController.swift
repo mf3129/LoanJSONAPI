@@ -11,6 +11,10 @@ import UIKit
 
 class KivaLoanTableViewController: UITableViewController {
 
+    private let  kivaLoanURL = "https://api.kivaws.org/v1/loans/newest.json"
+    private var loans = [Loan]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,6 +48,102 @@ class KivaLoanTableViewController: UITableViewController {
         return cell
     }
     
+    
+    
+    func getLatesLoans() {
+        guard let loanURL = URL(string: kivaLoanURL) else {
+            return
+        }
+        
+        
+        let request = URLRequest(url: loanURL)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+            
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            //Parsing JSON Data
+            if let data = data {
+                self.loans = self.parseJsonData(data: data)
+                
+                    //Reloading the table Data
+                OperationQueue.main.addOperation({
+                    self.tableView.reloadData()
+                })
+                
+            }
+        }
+        
+        task.resume()
 
-
+    }
+    
+    func parseJsonData(data: Data) -> [Loan] {
+        
+        var loans = [Loan]()
+        
+        do {
+            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+            
+                //Parse JSON data
+                let jsonLoans = jsonResult?["loans"] as! [AnyObject]
+                for jsonLoan in jsonLoans {
+                    var loan = Loan()
+                    loan.name = jsonLoan["name"] as! String
+                    loan.amount = jsonLoan["loan_amount"] as! Int
+                    loan.use = jsonLoan["use"] as! String
+                    let location = jsonLoan["location"] as! [String:AnyObject]
+                    loan.country = location["country"] as! String
+                    loans.append(loan)
+                }
+        } catch {
+            print(error)
+        }
+        
+        return loans
+        
+    }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
