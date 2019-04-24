@@ -90,30 +90,35 @@ class KivaLoanTableViewController: UITableViewController {
         
         var loans = [Loan]()
         
+        let decoder = JSONDecoder()
+        
         do {
-            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
             
-                //Parse JSON data
-                let jsonLoans = jsonResult?["loans"] as! [AnyObject]
-                for jsonLoan in jsonLoans {
-                    var loan = Loan()
-                    loan.name = jsonLoan["name"] as! String
-                    loan.amount = jsonLoan["loan_amount"] as! Int
-                    loan.use = jsonLoan["use"] as! String
-                    let location = jsonLoan["location"] as! [String:AnyObject]
-                    loan.country = location["country"] as! String
-                    loans.append(loan)
+            let loanDataStore = try decoder.decode(LoanDataStore.self, from: data)
+            loans = loanDataStore.loans
+            
+//            let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+//
+//                //Parse JSON data
+//                let jsonLoans = jsonResult?["loans"] as! [AnyObject]
+//                for jsonLoan in jsonLoans {
+//                    var loan = Loan()
+//                    loan.name = jsonLoan["name"] as! String
+//                    loan.amount = jsonLoan["loan_amount"] as! Int
+//                    loan.use = jsonLoan["use"] as! String
+//                    let location = jsonLoan["location"] as! [String:AnyObject]
+//                    loan.country = location["country"] as! String
+//                    loans.append(loan)
                 }
-        } catch {
+        catch {
             print(error)
         }
         
         return loans
         
     }
-    
-}
 
+}
 
 
 
