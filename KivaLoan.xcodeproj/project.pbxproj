@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F4213AE4226B92A7002D0C1F /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4213AE3226B92A7002D0C1F /* Loan.swift */; };
+		F4265CF0226FDE1200ACDED0 /* LoadDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4265CEF226FDE1200ACDED0 /* LoadDataStore.swift */; };
 		F498908D1DA39D610064F982 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F498908C1DA39D610064F982 /* AppDelegate.swift */; };
 		F49890921DA39D610064F982 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F49890901DA39D610064F982 /* Main.storyboard */; };
 		F49890941DA39D610064F982 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F49890931DA39D610064F982 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		F4213AE3226B92A7002D0C1F /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
+		F4265CEF226FDE1200ACDED0 /* LoadDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadDataStore.swift; sourceTree = "<group>"; };
 		F49890891DA39D610064F982 /* KivaLoan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KivaLoan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F498908C1DA39D610064F982 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F49890911DA39D610064F982 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				F4213AE3226B92A7002D0C1F /* Loan.swift */,
+				F4265CEF226FDE1200ACDED0 /* LoadDataStore.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 				F49890A11DA39ED80064F982 /* KivaLoanTableViewCell.swift in Sources */,
 				F498909F1DA39EC10064F982 /* KivaLoanTableViewController.swift in Sources */,
 				F498908D1DA39D610064F982 /* AppDelegate.swift in Sources */,
+				F4265CF0226FDE1200ACDED0 /* LoadDataStore.swift in Sources */,
 				F4213AE4226B92A7002D0C1F /* Loan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
